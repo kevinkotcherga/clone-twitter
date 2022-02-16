@@ -15,7 +15,7 @@ const TweetForm = () => {
     };
 
     dispatch(addTweet(data));
-
+    setBody('');
   }
 };
 
