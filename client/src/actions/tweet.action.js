@@ -15,10 +15,11 @@ export const getTweets = () => {
 
 export const addTweet = (data) => {
   return (dispatch) => {
-    return axios.post('api/tweets', data)
-    .then((res) => {
-      dispatch({ type: ADD_TWEET, payload: res.data})
-    })
-    .catch((err) => console.log(err));
+    return axios
+			.post('api/tweet_posts', data)
+			.then(res => {
+				dispatch({ type: ADD_TWEET, payload: res.data });
+			})
+			.catch(err => console.log(err));
   };
 };

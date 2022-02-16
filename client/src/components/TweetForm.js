@@ -1,24 +1,21 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTweet, getTweets } from "../actions/tweet.action";
+import { addTweet } from "../actions/tweet.action";
 
 const TweetForm = () => {
-  const [content, setContent] = useState('');
+  const [body, setBody] = useState('');
   const dispatch = useDispatch();
 
-  const handleForm = async (e) => {
+  const handleForm = (e) => {
   e.preventDefault();
 
-  if (content){
+  if (body) {
     const data = {
-      content,
-      likes: 0,
-      retweet: 0
+      body
     };
 
-    await dispatch(addTweet(data));
-    setContent('');
-    dispatch(getTweets());
+    dispatch(addTweet(data));
+
   }
 };
 
@@ -26,7 +23,7 @@ const TweetForm = () => {
     <div className="form-container">
       <form onSubmit={(e) => handleForm(e)}>
         <h1>Accueil</h1>
-        <textarea placeholder="Quoi de neuf ?" value={content} onChange={(e)=> setContent(e.target.value)}></textarea>
+        <textarea placeholder="Quoi de neuf ?" value={body} onChange={(e)=> setBody(e.target.value)}></textarea>
         <input type="submit" value="Tweeter" className="submit" />
       </form>
     </div>
